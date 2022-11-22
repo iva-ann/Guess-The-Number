@@ -23,6 +23,8 @@
 		A96FB858292BFF8200874099 /* EnterNumbersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FB857292BFF8200874099 /* EnterNumbersModels.swift */; };
 		A96FB85A292C008D00874099 /* EnterNumberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FB859292C008D00874099 /* EnterNumberPresenter.swift */; };
 		A96FB85C292C01BF00874099 /* EnterNumberBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FB85B292C01BF00874099 /* EnterNumberBuilder.swift */; };
+		A96FB860292CCABA00874099 /* ComputerIsGuessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FB85F292CCABA00874099 /* ComputerIsGuessingViewController.swift */; };
+		A96FB862292CE55100874099 /* ComputerIsGuessigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FB861292CE55100874099 /* ComputerIsGuessigView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		A96FB857292BFF8200874099 /* EnterNumbersModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumbersModels.swift; sourceTree = "<group>"; };
 		A96FB859292C008D00874099 /* EnterNumberPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberPresenter.swift; sourceTree = "<group>"; };
 		A96FB85B292C01BF00874099 /* EnterNumberBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberBuilder.swift; sourceTree = "<group>"; };
+		A96FB85F292CCABA00874099 /* ComputerIsGuessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerIsGuessingViewController.swift; sourceTree = "<group>"; };
+		A96FB861292CE55100874099 /* ComputerIsGuessigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerIsGuessigView.swift; sourceTree = "<group>"; };
 		F48F5C9C82561A48A05CCB04 /* Pods-GuesTheNumber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuesTheNumber.debug.xcconfig"; path = "Target Support Files/Pods-GuesTheNumber/Pods-GuesTheNumber.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				A96FB84F292BED9500874099 /* MainCoordinator.swift */,
+				A96FB85D292CCA7900874099 /* ComputerIsGuessingScreen */,
 				A96FB851292BEEA400874099 /* EnterNumberScreen */,
 				A96FB841292BD5B700874099 /* MainScreen */,
 				A96FB82D292BD48B00874099 /* AppDelegate.swift */,
@@ -137,6 +142,23 @@
 			children = (
 				A96FB852292BEEDE00874099 /* EnterNumberViewController.swift */,
 				A96FB855292BFC6700874099 /* EnterNumberView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A96FB85D292CCA7900874099 /* ComputerIsGuessingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A96FB85E292CCA9D00874099 /* View */,
+			);
+			path = ComputerIsGuessingScreen;
+			sourceTree = "<group>";
+		};
+		A96FB85E292CCA9D00874099 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A96FB85F292CCABA00874099 /* ComputerIsGuessingViewController.swift */,
+				A96FB861292CE55100874099 /* ComputerIsGuessigView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,8 +290,10 @@
 				A96FB82E292BD48B00874099 /* AppDelegate.swift in Sources */,
 				A96FB850292BED9500874099 /* MainCoordinator.swift in Sources */,
 				A96FB85C292C01BF00874099 /* EnterNumberBuilder.swift in Sources */,
+				A96FB862292CE55100874099 /* ComputerIsGuessigView.swift in Sources */,
 				A96FB853292BEEDE00874099 /* EnterNumberViewController.swift in Sources */,
 				A96FB830292BD48B00874099 /* SceneDelegate.swift in Sources */,
+				A96FB860292CCABA00874099 /* ComputerIsGuessingViewController.swift in Sources */,
 				A96FB858292BFF8200874099 /* EnterNumbersModels.swift in Sources */,
 				A96FB84C292BDF4000874099 /* MainModels.swift in Sources */,
 				A96FB84E292BE87900874099 /* MainScreenBuilder.swift in Sources */,

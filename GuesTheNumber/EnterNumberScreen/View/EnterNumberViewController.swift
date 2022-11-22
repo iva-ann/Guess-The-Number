@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EnterNumberViewController: UIViewController {
+class EnterNumberViewController: UIViewController, UITextFieldDelegate {
     
     var presenter: EnterNumberViewControllerOutput?
     private let contentView = EnterNumberView()
@@ -22,6 +22,8 @@ class EnterNumberViewController: UIViewController {
     }
     
     func initialSetup() {
+        navigationItem.hidesBackButton = true
+        
         contentView.completions = EnterNumberCompletions(
             enterNumberButtonTapped: { [weak self] in
                 self?.presenter?.enterNumberButtonTapped()

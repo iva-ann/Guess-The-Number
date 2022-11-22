@@ -24,7 +24,5 @@ final class EnterNumberPresenter: EnterNumberViewControllerOutput {
     func enterNumberButtonTapped() {
         moduleOutput?.pushComputerIsGuessingScreen()
     }
-    
-    
 }
 

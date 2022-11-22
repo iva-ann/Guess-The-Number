@@ -54,6 +54,9 @@ extension MainCoordinator: MainCoordinatorProtocol {
     }
     
     func pushComputerIsGuessingScreen() {
+        let viewController = ComputerIsGuessingViewController()
+        viewControllers.append(viewController)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

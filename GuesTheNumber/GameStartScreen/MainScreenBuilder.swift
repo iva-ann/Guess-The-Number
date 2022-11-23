@@ -25,9 +25,9 @@
 //}
 
 final class MainScreenBuilder {
-    static func buildModule(moduleOutput: MainCoordinatorProtocol? = nil) -> MainScreenViewController {
-        let viewController = MainScreenViewController()
-        let presenter = MainScreenPresenter(moduleOutput: moduleOutput)
+    static func buildModule(moduleOutput: MainCoordinatorProtocol? = nil) -> GameStartViewController {
+        let viewController = GameStartViewController()
+        let presenter = GameStartPresenter(moduleOutput: moduleOutput)
         viewController.presenter = presenter
         
         return viewController

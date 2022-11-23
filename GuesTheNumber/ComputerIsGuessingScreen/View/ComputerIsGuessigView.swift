@@ -24,12 +24,10 @@ class ComputerIsGuessigView: UIView {
     
     // MARK: - Properties
     
-//    var tryCount = 1
-    var guessNumber = 666
+    var completions: ButtonCompletions?
     
     private lazy var tryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Try № 1"
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         return label
@@ -45,7 +43,6 @@ class ComputerIsGuessigView: UIView {
     
     private lazy var yourNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "Your number is - \(guessNumber)"
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         return label
@@ -65,9 +62,9 @@ class ComputerIsGuessigView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 25)
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1.0
-//        button.backgroundColor = .white
         button.setTitleColor(.black , for: .normal)
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -78,8 +75,8 @@ class ComputerIsGuessigView: UIView {
         button.setTitleColor(.black , for: .normal)
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1.0
-//        button.backgroundColor = .white
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(equalsButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -90,8 +87,8 @@ class ComputerIsGuessigView: UIView {
         button.setTitleColor(.black , for: .normal)
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1.0
-//        button.backgroundColor = .white
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(lessButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -101,14 +98,13 @@ class ComputerIsGuessigView: UIView {
         stackView.spacing = Constant.buttonStackViewSpacing
         return stackView
     }()
+    
     private lazy var headerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = Constant.headerStackViewSpacing
         return stackView
     }()
-    
-    
     
     // MARK: - Initialization
 
@@ -121,13 +117,23 @@ class ComputerIsGuessigView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - Private Methods
     
     private func initialSetup() {
         backgroundColor = .systemBackground
-        
         configureSubviews()
+    }
+    
+    func configurePossibleNumber(with model: PossibleNumberModel) {
+       let guessNumber = model.number
+        guard guessNumber != nil else { return }
+        yourNumberLabel.text = "Your number is - \(guessNumber)"
+    }
+    
+    func configureCounter(with model: ComputerCounter){
+        let count = model.count
+        guard count != nil else { return }
+        tryLabel.text = "Try № \(count)"
     }
     
     func configureSubviews() {
@@ -178,7 +184,18 @@ class ComputerIsGuessigView: UIView {
             $0.bottom.equalTo(buttonStackView.snp.top).offset(Constant.numberIsLabelBottom)
             $0.leading.equalTo(buttonStackView.snp.leading)
         }
-        
     }
     
+    // MARK: - Actions
+    @objc func moreButtonTapped(sender: UIButton) {
+        completions?.moreButtonTapped()
+    }
+    
+    @objc func equalsButtonTapped(sender: UIButton) {
+        completions?.equalsButtonTapped()
+    }
+    
+    @objc func lessButtonTapped(sender: UIButton) {
+        completions?.lessButtonTapped()
+    }
 }

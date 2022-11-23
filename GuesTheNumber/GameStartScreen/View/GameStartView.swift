@@ -1,5 +1,5 @@
 //
-//  MainScreenView.swift
+//GameStartScreenView.swift
 //  GuesTheNumber
 //
 //  Created by Анна Иванова on 21.11.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MainScreenView: UIView {
+final class GameStartView: UIView {
     
     // MARK: - Constants
     
@@ -21,7 +21,7 @@ final class MainScreenView: UIView {
     
     // MARK: - Properties
     
-    var completions: MainViewCompletions?
+    var completions: GameStarCompletions?
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = "Me Awesome Game"

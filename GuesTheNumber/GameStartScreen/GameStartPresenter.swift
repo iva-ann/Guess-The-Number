@@ -1,5 +1,5 @@
 //
-//  MainScreenPresenter.swift
+//  GameStartScreenPresenter.swift
 //  GuesTheNumber
 //
 //  Created by Анна Иванова on 21.11.2022.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol MainScreenViewControllerOutput {
+protocol GameStartScreenViewControllerOutput {
     func startButtonTapped()
 }
 
-final class MainScreenPresenter: MainScreenViewControllerOutput {
+final class GameStartPresenter: GameStartScreenViewControllerOutput {
     
     // MARK: - External dependencies
     

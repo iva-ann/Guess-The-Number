@@ -11,7 +11,8 @@ protocol MainCoordinatorProtocol {
     // Push Screens
     func pushEnterNumberScreen()
     func pushComputerIsGuessingScreen()
-    
+    func pushUserIsGuesingScreen(_ model: ComputerCounter)
+    func pushGameResultsScreen(_ model: CounterModel)
 }
 
 final class MainCoordinator {
@@ -54,9 +55,20 @@ extension MainCoordinator: MainCoordinatorProtocol {
     }
     
     func pushComputerIsGuessingScreen() {
-        let viewController = ComputerIsGuessingViewController()
+        let viewController = ComputerIsGuessingBuilder.buildModule(moduleOutput: self)
         viewControllers.append(viewController)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func pushUserIsGuesingScreen(_ model: ComputerCounter) {
+        let viewController = UserIsGuesisngBuilder.buildModule(moduleOutput: self, computerCounter: model)
+        viewControllers.append(viewController)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func pushGameResultsScreen(_ model: CounterModel) {
+        let viewController = GameResultBuilder.buildModule(moduleOutput: self, counterModel: model)
+        viewControllers.append(viewController)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

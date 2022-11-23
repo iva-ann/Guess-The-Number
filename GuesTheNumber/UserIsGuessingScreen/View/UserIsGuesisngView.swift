@@ -65,7 +65,7 @@ class UserIsGuesisngView: UIView {
         button.backgroundColor = .blue
         button.layer.cornerRadius = 15
         button.titleLabel?.font = .systemFont(ofSize: 25)
-        button.setTitle("Gues", for: .normal)
+        button.setTitle("Guess", for: .normal)
         button.setTitleColor(.white , for: .normal)
         button.addTarget(self, action: #selector(guessButtonTapped), for: .touchUpInside)
         return button

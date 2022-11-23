@@ -14,7 +14,7 @@ protocol UserIsGuesisngViewControllerOutput {
 
 final class UserIsGuesisngPresenter {
     
-    // MARK: - External dependencies
+    // MARK: - Private Properties
     
     private let randomNumber = Array(1...100).randomElement()
     private var computerCounter: ComputerCounter
@@ -23,6 +23,7 @@ final class UserIsGuesisngPresenter {
     private let moduleOutput: MainCoordinatorProtocol?
     private let view: UserIsGuesisngViewControllerInput?
     
+    // MARK: - Initialization
     
     init(moduleOutput: MainCoordinatorProtocol?,
          view: UserIsGuesisngViewControllerInput?,
@@ -31,6 +32,8 @@ final class UserIsGuesisngPresenter {
         self.view = view
         self.computerCounter = computerCounter
     }
+    
+    // MARK: - Private Methods
     
     private func compareNumbers(_ model: InputModel){
         guard let inputNumber = Int(model.input) else { return }
@@ -65,12 +68,15 @@ final class UserIsGuesisngPresenter {
             displayUserCounter(userCounter)
         }
     }
+    
     private func configureCounterModel() -> CounterModel {
         let userCounter = UserCounter(count: userCounter)
         let counterModel = CounterModel(userCounter: userCounter, computerCounter: computerCounter)
         return counterModel
     }
 }
+
+// MARK: - UserIsGuesisngViewControllerOutput
 
 extension UserIsGuesisngPresenter: UserIsGuesisngViewControllerOutput  {
     func guessButtonTapped(_ model: InputModel) {

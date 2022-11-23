@@ -22,6 +22,7 @@ final class GameStartView: UIView {
     // MARK: - Properties
     
     var completions: GameStarCompletions?
+    
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = "Me Awesome Game"
@@ -31,7 +32,7 @@ final class GameStartView: UIView {
     }()
     
     private lazy var startButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Start New Game", for: .normal)
         button.setTitleColor(.white , for: .normal)
         button.backgroundColor = .blue
@@ -41,14 +42,13 @@ final class GameStartView: UIView {
         return button
     }()
     
-    
     // MARK: - Initialization
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialSetup()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -80,6 +80,7 @@ final class GameStartView: UIView {
     }
     
     // MARK: - Actions
+    
     @objc func startButtonTapped(sender: UIButton){
         completions?.startButtonTapped()
     }

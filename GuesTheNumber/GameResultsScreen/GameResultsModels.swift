@@ -13,3 +13,7 @@ struct CounterModel {
     let userCounter: UserCounter
     let computerCounter: ComputerCounter
 }
+
+struct GameResultModel {
+    let result: String
+}

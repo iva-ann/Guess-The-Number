@@ -7,13 +7,13 @@
 
 import UIKit
 
-//MainScreenViewControllerOut
-
-class GameStartViewController: UIViewController {
+final class GameStartViewController: UIViewController {
     
     var presenter: GameStartScreenViewControllerOutput?
     private let contentView = GameStartView()
 
+    // MARK: - Lifecycle
+    
     override func loadView() {
         view = contentView
     }
@@ -23,7 +23,9 @@ class GameStartViewController: UIViewController {
         initialSetup()
     }
     
-    func initialSetup() {
+    // MARK: - Private Methods
+    
+    private func initialSetup() {
         contentView.completions = GameStarCompletions(
             startButtonTapped: { [weak self] in
                 self?.presenter?.startButtonTapped()

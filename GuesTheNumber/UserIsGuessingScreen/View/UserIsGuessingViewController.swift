@@ -16,25 +16,31 @@ final class UserIsGuesisngViewController: UIViewController {
     
     var presenter: UserIsGuesisngViewControllerOutput?
     private let contentView = UserIsGuesisngView()
-
+    
+    // MARK: - Lifecycle
+    
     override func loadView() {
         view = contentView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
     }
     
-    func initialSetup() {
+    // MARK: - Private Methods
+    
+   private func initialSetup() {
         navigationItem.hidesBackButton = true
         
         contentView.completions = GuessNumberCompletions(
             guessButtonTapped: { [weak self] model in
                 self?.presenter?.guessButtonTapped(model)
-        })
+            })
     }
 }
+
+// MARK: - UserIsGuesisngViewControllerInput
 
 extension UserIsGuesisngViewController: UserIsGuesisngViewControllerInput {
     func configureResultLabels(with model: ResultModel) {

@@ -10,13 +10,14 @@ import UIKit
 final class GameResultsView: UIView {
     
     // MARK: - Constants
+    
     enum Constant {
-        static let topSpacing: CGFloat = 30
+        static let topSpacing: CGFloat = 20
         static let stackViewSpacing: CGFloat = 15
-        static let scoresLabelSpacing: CGFloat = 30
-        static let leadingTrailingSpasing: CGFloat = 15
-        static let bottomSpacing: CGFloat = -20
-//        static let buttonSpacing: CGFloat = 15
+        static let scoresLabelSpacing: CGFloat = 60
+        static let leadingTrailingSpasing: CGFloat = 25
+        static let bottomSpacing: CGFloat = -40
+        static let backButtonSpacing: CGFloat = -40
         
         static let mainStackViewSpacing: CGFloat = 35
         static let mainSVLeftRightSpacing: CGFloat = 30
@@ -52,7 +53,7 @@ final class GameResultsView: UIView {
     private lazy var scoresStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .leading
+//        stackView.alignment = .leading
         stackView.spacing = Constant.stackViewSpacing
         return stackView
     }()
@@ -86,9 +87,15 @@ final class GameResultsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
     func configureScoreLabels(with model: CounterModel) {
         userCountLabel.text = "Your's tries count: \(model.userCounter.count)"
         computerCountLabel.text = "Computers's tries count: \(model.computerCounter.count)"
+    }
+    
+    func configureGameResult(with model: ResultModel){
+        gameResultLabel.text = model.result
     }
     
     // MARK: - Private Methods
@@ -120,16 +127,17 @@ final class GameResultsView: UIView {
         backToStartButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(Constant.bottomSpacing)
             $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().offset(Constant.leadingTrailingSpasing)
+            $0.leading.trailing.equalToSuperview().inset(Constant.leadingTrailingSpasing)
         }
         
         gameResultLabel.snp.makeConstraints {
-            $0.bottom.equalTo(backToStartButton.snp.top).offset(Constant.scoresLabelSpacing)
+            $0.bottom.equalTo(backToStartButton.snp.top).offset(Constant.backButtonSpacing)
             $0.centerX.equalToSuperview()
         }
     }
     
     // MARK: - Actions
+    
     @objc func backToStartButtonTapped() {
         completions?.backToStartButtonTapped()
     }

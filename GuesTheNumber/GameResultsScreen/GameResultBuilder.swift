@@ -10,8 +10,9 @@ final class GameResultBuilder {
         let viewController = GameResultsViewController()
         let presenter = GameResultPresenter(
             moduleOutput: moduleOutput,
-            counterModel: counterModel)
-//        viewController.presenter = presenter
+            counterModel: counterModel,
+            view: viewController)
+        viewController.presenter = presenter
         
         return viewController
     }

@@ -18,7 +18,7 @@ final class ComputerIsGuessigPresenter: ComputerIsGuessigViewControllerOutput {
     
     // MARK: - External dependencies
     
-   private var computerCounter = 1
+    private var computerCounter = 1
     private var arrayOfNumber = Array(1...100)
     private var midValue = 0
     private var leftIndex = 0
@@ -48,7 +48,6 @@ final class ComputerIsGuessigPresenter: ComputerIsGuessigViewControllerOutput {
     func moreButtonTapped() {
         guessTheNumber(numbers: arrayOfNumber, leftIndex: (arrayOfNumber.firstIndex(of: midValue)! + 1), rightIndex: self.rightIndex)
         computerCounter += 1
-        
     }
     
     func equalsButtonTapped() {
@@ -67,7 +66,7 @@ final class ComputerIsGuessigPresenter: ComputerIsGuessigViewControllerOutput {
     }
     
     func displayComputerCounter(_ count: Int){
-    let viewModel = ComputerCounter(count: count)
+        let viewModel = ComputerCounter(count: count)
         view?.configureCounter(viewModel)
     }
 }

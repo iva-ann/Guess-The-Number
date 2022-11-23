@@ -12,32 +12,28 @@ protocol ComputerIsGuessingViewControllerInput: AnyObject {
     func configureCounter(_ model: ComputerCounter)
 }
 
-class ComputerIsGuessingViewController: UIViewController, ComputerIsGuessingViewControllerInput {
-
+class ComputerIsGuessingViewController: UIViewController {
+    
     var presenter: ComputerIsGuessigViewControllerOutput?
     private let contentView = ComputerIsGuessigView()
     private let arrayOfNumbers = Array(1...100)
-
+    
+    // MARK: - Lifecycle
+    
     override func loadView() {
         view = contentView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
         presenter?.guessTheNumber(numbers: arrayOfNumbers, leftIndex: arrayOfNumbers.startIndex, rightIndex: (arrayOfNumbers.count - 1))
-
+        
     }
     
-    func configurePossibleNumber(_ model: PossibleNumberModel) {
-        contentView.configurePossibleNumber(with: model)
-    }
+    // MARK: - Private Methods
     
-    func configureCounter(_ model: ComputerCounter){
-        contentView.configureCounter(with: model)
-    }
-                                  
-    func initialSetup() {
+    private func initialSetup() {
         navigationItem.hidesBackButton = true
         
         contentView.completions = ButtonCompletions(
@@ -51,5 +47,17 @@ class ComputerIsGuessingViewController: UIViewController, ComputerIsGuessingView
                 self?.presenter?.lessButtonTapped()
             }
         )
+    }
+}
+
+// MARK: - ComputerIsGuessingViewControllerInput
+
+extension ComputerIsGuessingViewController: ComputerIsGuessingViewControllerInput {
+    func configurePossibleNumber(_ model: PossibleNumberModel) {
+        contentView.configurePossibleNumber(with: model)
+    }
+    
+    func configureCounter(_ model: ComputerCounter){
+        contentView.configureCounter(with: model)
     }
 }

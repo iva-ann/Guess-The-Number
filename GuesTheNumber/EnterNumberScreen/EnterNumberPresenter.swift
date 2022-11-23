@@ -20,9 +20,8 @@ final class EnterNumberPresenter: EnterNumberViewControllerOutput {
     init(moduleOutput: MainCoordinatorProtocol?) {
         self.moduleOutput = moduleOutput
     }
-
+    
     func enterNumberButtonTapped() {
         moduleOutput?.pushComputerIsGuessingScreen()
     }
 }
-

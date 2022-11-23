@@ -15,12 +15,12 @@ final class GameStartPresenter: GameStartScreenViewControllerOutput {
     
     // MARK: - External dependencies
     
-    private let moduleOutput: MainCoordinatorProtocol?
+    private let moduleOutput: StartGameCoordinatorProtocol?
     
-    init(moduleOutput: MainCoordinatorProtocol?) {
+    init(moduleOutput: StartGameCoordinatorProtocol?) {
         self.moduleOutput = moduleOutput
     }
-
+    
     func startButtonTapped() {
         moduleOutput?.pushEnterNumberScreen()
     }

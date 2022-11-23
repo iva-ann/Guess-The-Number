@@ -7,21 +7,25 @@
 
 import UIKit
 
-class EnterNumberViewController: UIViewController, UITextFieldDelegate {
+final class EnterNumberViewController: UIViewController {
     
     var presenter: EnterNumberViewControllerOutput?
     private let contentView = EnterNumberView()
-
+    
+    // MARK: - Lifecycle
+    
     override func loadView() {
         view = contentView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
     }
     
-    func initialSetup() {
+    // MARK: - Private Methods
+    
+    private func initialSetup() {
         navigationItem.hidesBackButton = true
         
         contentView.completions = EnterNumberCompletions(

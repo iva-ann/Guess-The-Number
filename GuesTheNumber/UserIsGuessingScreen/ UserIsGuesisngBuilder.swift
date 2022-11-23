@@ -5,7 +5,6 @@
 //  Created by Анна Иванова on 23.11.2022.
 //
 
-import Foundation
 
 final class UserIsGuesisngBuilder {
     static func buildModule(moduleOutput: MainCoordinatorProtocol? = nil, computerCounter: ComputerCounter) -> UserIsGuesisngViewController {

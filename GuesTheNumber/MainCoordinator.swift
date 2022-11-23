@@ -9,51 +9,37 @@ import UIKit
 
 protocol MainCoordinatorProtocol {
     // Push Screens
-    func pushEnterNumberScreen()
     func pushComputerIsGuessingScreen()
     func pushUserIsGuesingScreen(_ model: ComputerCounter)
     func pushGameResultsScreen(_ model: CounterModel)
+    func endFlow()
 }
 
-final class MainCoordinator {
+final class MainCoordinator: Coordinator {
     
-    private let navigationController: UINavigationController?
+    // MARK: - Properties
+    
+    let navigationController: UINavigationController?
+    private weak var parentCoordinator: Coordinator?
     private var viewControllers: [UIViewController] = []
     
-    init(navigationController: UINavigationController?) {
+    // MARK: - Initialization
+    
+    init(navigationController: UINavigationController?,
+         parentCoordinator: Coordinator?) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func startFlow() {
-        let rootVC = MainScreenBuilder.buildModule(moduleOutput: self)
-        viewControllers.append(rootVC)
-        navigationController?.pushViewController(rootVC, animated: false)
+        let enterTheNumberVC = EnterNumberBuilder.buildModule(moduleOutput: self)
+        navigationController?.pushViewController(enterTheNumberVC, animated: true)
     }
 }
 
-extension MainCoordinator {
-    
-    func popToRootViewController() {
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
-    func popViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func dismissViewController() {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
-}
+// MARK: - MainCoordinatorProtocol
 
 extension MainCoordinator: MainCoordinatorProtocol {
-    
-    func pushEnterNumberScreen() {
-        let viewController = EnterNumberBuilder.buildModule(moduleOutput: self)
-        viewControllers.append(viewController)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     func pushComputerIsGuessingScreen() {
         let viewController = ComputerIsGuessingBuilder.buildModule(moduleOutput: self)
         viewControllers.append(viewController)
@@ -70,5 +56,9 @@ extension MainCoordinator: MainCoordinatorProtocol {
         let viewController = GameResultBuilder.buildModule(moduleOutput: self, counterModel: model)
         viewControllers.append(viewController)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func endFlow(){
+        parentCoordinator?.endChildFlow()
     }
 }

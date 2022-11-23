@@ -8,7 +8,6 @@
 import UIKit
 
 class EnterNumberView: UIView {
-
     
     // MARK: - Constants
     
@@ -23,7 +22,7 @@ class EnterNumberView: UIView {
     
     var completions: EnterNumberCompletions?
     
-     private lazy var enterNumberTextField: UITextField = {
+    private lazy var enterNumberTextField: UITextField = {
         let enterNumber = UITextField()
         enterNumber.borderStyle = .roundedRect
         enterNumber.backgroundColor = .white
@@ -36,7 +35,7 @@ class EnterNumberView: UIView {
     }()
     
     private lazy var enterNumberButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.backgroundColor = .blue
         button.layer.cornerRadius = 15
         button.titleLabel?.font = .systemFont(ofSize: 25)
@@ -47,12 +46,12 @@ class EnterNumberView: UIView {
     }()
     
     // MARK: - Initialization
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialSetup()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -85,13 +84,15 @@ class EnterNumberView: UIView {
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(Constant.ButtonLefrRigtSpacing)
         }
-}
+    }
     
     // MARK: - Actions
     @objc func enterNumberButtonTapped(sender: UIButton) {
         completions?.enterNumberButtonTapped()
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension EnterNumberView: UITextFieldDelegate {
     
@@ -100,16 +101,16 @@ extension EnterNumberView: UITextFieldDelegate {
         let characterSet = CharacterSet(charactersIn: string)
         
         let text = (enterNumberTextField.text! as NSString).replacingCharacters(in: range, with: string)
-    if text.isEmpty {
-        enterNumberButton.isEnabled = false
-        enterNumberButton.alpha = 0.5
-    } else if let num = Int(text), num >= 1 && num <= 100 {
-        enterNumberButton.isEnabled = true
-        enterNumberButton.alpha = 1.0
-    } else {
-        enterNumberButton.isEnabled = false
-        enterNumberButton.alpha = 0.5
-    }
+        if text.isEmpty {
+            enterNumberButton.isEnabled = false
+            enterNumberButton.alpha = 0.5
+        } else if let num = Int(text), num >= 1 && num <= 100 {
+            enterNumberButton.isEnabled = true
+            enterNumberButton.alpha = 1.0
+        } else {
+            enterNumberButton.isEnabled = false
+            enterNumberButton.alpha = 0.5
+        }
         return allowedCharacters.isSuperset(of: characterSet)
     }
 }

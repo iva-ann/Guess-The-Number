@@ -107,25 +107,20 @@ class ComputerIsGuessigView: UIView {
     }()
     
     // MARK: - Initialization
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialSetup()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private Methods
-    
-    private func initialSetup() {
-        backgroundColor = .systemBackground
-        configureSubviews()
-    }
+    // MARK: - Public Methods
     
     func configurePossibleNumber(with model: PossibleNumberModel) {
-       let guessNumber = model.number
+        let guessNumber = model.number
         guard guessNumber != nil else { return }
         yourNumberLabel.text = "Your number is - \(guessNumber)"
     }
@@ -136,7 +131,14 @@ class ComputerIsGuessigView: UIView {
         tryLabel.text = "Try № \(count)"
     }
     
-    func configureSubviews() {
+    // MARK: - Private Methods
+    
+    private func initialSetup() {
+        backgroundColor = .systemBackground
+        configureSubviews()
+    }
+    
+    private func configureSubviews() {
         headerStackView.snp.removeConstraints()
         buttonStackView.snp.removeConstraints()
         
@@ -166,11 +168,11 @@ class ComputerIsGuessigView: UIView {
         moreButton.snp.makeConstraints {
             $0.height.width.equalTo(Constant.heighWidthOfButton)
         }
-
+        
         lessButton.snp.makeConstraints {
             $0.height.width.equalTo(Constant.heighWidthOfButton)
         }
-
+        
         equalsButton.snp.makeConstraints {
             $0.height.width.equalTo(Constant.heighWidthOfButton)
         }
@@ -187,6 +189,7 @@ class ComputerIsGuessigView: UIView {
     }
     
     // MARK: - Actions
+    
     @objc func moreButtonTapped(sender: UIButton) {
         completions?.moreButtonTapped()
     }

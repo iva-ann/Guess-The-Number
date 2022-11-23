@@ -6,22 +6,50 @@
 //
 
 import UIKit
+
 protocol GameResultsViewControllerInput: AnyObject {
-    func configureLabels(_ model: CounterModel)
+    func configureScoreLabels(_ model: CounterModel)
+    func configureResultLabel(_ model: ResultModel)
 }
 
-class GameResultsViewController: UIViewController {
+final class GameResultsViewController: UIViewController {
     
-    private var presenter: GameResultsViewControllerOutput?
+    var presenter: GameResultsViewControllerOutput?
     private let contentView = GameResultsView()
-
+    
+    // MARK: - Lifecycle
+    
     override func loadView() {
         view = contentView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        initialSetup()
+        initialSetup()
+        presenter?.displayResult()
+        presenter?.displayCommonScores()
     }
+    
+    // MARK: - Private Methods
+    
+    private func initialSetup() {
+        navigationItem.hidesBackButton = true
+        
+        contentView.completions = GameRessultsCompletion(
+            backToStartButtonTapped: { [weak self] in
+                self?.presenter?.backToStartButtonTapped()
+            })
+    }
+}
 
+// MARK: - GameResultsViewControllerInput
+
+extension GameResultsViewController: GameResultsViewControllerInput {
+    func configureScoreLabels(_ model: CounterModel) {
+        contentView.configureScoreLabels(with: model)
+    }
+    
+    func configureResultLabel(_ model: ResultModel) {
+        contentView.configureGameResult(with: model)
+    }
 }
